@@ -1,7 +1,7 @@
 {
     "name": "plateaux-numeriques",
     "version": "0.0.1",
-    "description": "",
+    "description": "Des sites web accessibles pour les villages et petites villes durables d’aujourd’hui et de demain",
     "main": "main.js",
     "repository": "https://github.com/design-commun/plateaux-numeriques",
     "author": "Design Commun <contact@designcommun.fr>",
