@@ -1,0 +1,9 @@
+{{ define "main" }}
+<section class="flex justify-between p-8">
+	<article class="ml-64 max-w-screen-md">
+	    <h1 class="">{{ .Title }}</h1>
+	    {{ .Content }}
+	</article>
+	{{ partial "toc.html" . }}
+</section>
+{{ end }}

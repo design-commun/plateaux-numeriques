@@ -1,0 +1,6 @@
+baseURL: https://plateaux-numeriques-demo.netlify.com/
+languageCode: fr
+defaultcontentlanguage: fr
+title: Votre Village
+theme: plateaux-numeriques
+copyright: Coopyleft 2020, Design Commun.

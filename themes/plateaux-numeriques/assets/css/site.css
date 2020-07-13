@@ -1,0 +1,18 @@
+.link-full:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+}
+
+.page-link a:hover + * .page-link__icon-container,
+.page-link a:focus + * .page-link__icon-container {
+	border: 1px solid #a0aec0;
+}
+
+p, ul, ol {
+	margin-bottom: 1.5em;
+}

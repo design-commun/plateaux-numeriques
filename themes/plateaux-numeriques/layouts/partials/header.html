@@ -1,0 +1,72 @@
+<header class="w-full max-w-screen-xl mx-auto xl:border-l xl:border-r border-b">
+	{{/*  CSS functionality for menu toggle  */}}
+	<style type="text/css">
+		input#nav-toggle:checked~label#show-button {
+			display: none;
+		}
+
+		input#nav-toggle:checked~label#hide-button {
+			display: flex;
+		}
+
+		input#nav-toggle:checked~#nav-menu {
+			display: block;
+		}
+	</style>
+
+	<div class="flex">
+		<nav class="w-full max-w-64 flex flex-col flex-wrap border-r" role="navigation">
+			<a href="{{ .Site.Home.Permalink }}" class="flex flex-col border-b p-8 text-gray-700 text-xl text-center">
+				<img src="{{ .Site.BaseURL }}/img/logo.svg" alt="Logo" class="mx-auto object-cover w-24 h-24">
+				{{ .Site.Title }}
+			</a>
+
+			<input id="nav-toggle" type=checkbox class="hidden">
+			<label id="show-button" for="nav-toggle" class="absolute top-0 right-0 p-4 flex items-center block md:hidden text-gray-500 hover:text-blue-500">
+				<svg class="fill-current h-4 w-4" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+					<title>Menu Open</title>
+					<path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z" />
+				</svg>
+			</label>
+			<label id="hide-button" for="nav-toggle" class="absolute top-0 right-0 p-4 flex items-center hidden text-gray-700 hover:text-blue-500">
+				<svg class="fill-current h-4 w-4" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+					<title>Menu Close</title>
+					<polygon points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+					transform="rotate(45 10 10)" />
+				</svg>
+			</label>
+
+			<ul id="nav-menu" class="hidden md:block p-8">
+				<!--{{ with .Site.GetPage "/about" }}
+				<li>
+						<a href="{{ .Permalink }}" class="text-gray-500 hover:text-blue-400">{{ .Title }}</a>
+				</li>
+				{{ end }}-->
+				{{ range .Site.Menus.main.ByWeight }}
+				{{ if .HasChildren }}
+				<li class="ml-0 mb-2 {{ if .HasMenuCurrent "main" . }}active{{ end }}">
+					<a href="#">{{ .Name }}</a>
+				</li>
+				<ul class="sub-menu">
+					{{ range .Children }}
+					<li class="{{ if .IsMenuCurrent "main" . }}active{{ end }}">
+						<a href="{{ .URL }}">{{ .Name }}</a>
+					</li>
+					{{ end }}
+				</ul>
+				{{ else }}
+				<li class="ml-0 mb-2">
+					<a href="{{ .URL }}">{{ .Name }}</a>
+				</li>
+				{{ end }}
+				{{ end }}
+			</ul>
+		</nav>
+
+		<div class="max-w-screen-lg">
+			<img src="{{ .Site.BaseURL }}/img/hero.jpg" alt="" class="object-cover h-full">
+		</div>
+
+	</div>
+
+</header>

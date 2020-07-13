@@ -1,0 +1,8 @@
+{{ if and (gt .WordCount 400 ) (.Params.toc) }}
+<aside class="pl-12 pr-0 w-full max-w-xs">
+	<div class="sticky top-0 pt-16">
+		<h2 class="text-sm uppercase tracking-wider text-gray-600 mb-4">Table des matières</h2>
+	  {{ .TableOfContents }}
+  </div>
+</aside>
+{{ end }}

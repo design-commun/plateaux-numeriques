@@ -1,0 +1,46 @@
+<footer class="bg-gray-900 w-full max-w-screen-xl mx-auto xl:border-l xl:border-r pin-b text-xs text-gray-400" role="contentinfo">
+	{{ with .Site.GetPage "/municipalite/mairie" }}
+	<section class="p-8">
+		<header>
+			<h3 class="font-bold">{{ .Title }}</h3>
+			<p>{{ .Params.Subtitle }}</p>
+		</header>
+
+		<div class="flex flex-wrap -mx-4 -mb-4">
+			<div class="w-full lg:w-1/2 px-4 mb-4">
+				{{ with .Params.location }}
+				<h4>Adresse</h4>
+				<p>
+					<span>{{ .adresse }}</span> <br>
+					<span>{{ .code_postal }}</span> <span>{{ .ville }}</span>, <span>{{ .pays }}</span>
+				</p>
+				{{ end }}
+				<h4>Horaires</h4>
+				<p>{{ .Params.horaires }}</p>
+			</div>
+			<div class="w-full lg:w-1/2 px-4 mb-4">
+				<div class="mb-4">
+					<h4>Téléphone & fax</h4>
+					<p>
+						Tél: <a href="tel:+33{{ .Params.tel }}">{{ .Params.tel }}</a> <br>
+						Fax: <a href="fax:+33{{ .Params.fax }}">{{ .Params.fax }}</a>
+					</p>
+				</div>
+				<div class="mb-4">
+					<h4>Email</h4>
+					<a href="mailto:{{ .Params.email }}">{{ .Params.email }}</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	{{ end }}
+
+	<section class="p-8 border-t border-gray-800">
+		<div>
+			<p>
+				Le service Plateaux numériques est porté par <a href="http://designcommun.fr/">design↔commun</a>, association de loi 1901 à but non lucratif. <br>
+				License 2020 Design Commun. Icône <a href="https://thenounproject.com/term/crest/448809/">crest</a> par <a href="https://thenounproject.com/bobomol/">AB</a> pour the Noun Project.
+			</p>
+		</div>
+	</section>
+</footer>

@@ -1,0 +1,215 @@
+{{ define "main" }}
+<!--
+<section class="text-center text-gray-700">
+	<h1 class="text-2xl">{{ .Title }}</h1>
+	{{ .Content }}
+</section>
+-->
+{{ with .Site.GetPage "/acces-directs" }}
+<section class="p-8 border-b" id="{{ .Slug }}">
+	<h2 class="text-3xl font-bold">{{ .Title }}</h2>
+	<p class="text-gray-600">{{ .Params.subtitle }}</p>
+	<ul class="flex flex-wrap xl:justify-center items-start my-8 -mx-6">
+	{{ range .Site.Menus.direct_access.ByWeight }}
+		<li class="page-link | w-1/3 sm:w-1/4 md:w-1/5 lg:w-1/6 ml-0 mb-2 px-6">
+			<div class="relative flex flex-col-reverse justify-center items-center text-center">
+				<a href="{{ .URL }}" class="page-link__title | link-full">{{ .Name }}</a>
+				<div class="w-full relative pb-1/1 mb-4">
+					<div class="page-link__icon-container | absolute w-full h-full flex justify-center items-center rounded-full bg-gray-300">
+						<span class="page-link__icon | text-5xl select-none">{{ .Pre }}</span>
+					</div>
+				</div>
+			</div>
+		</li>
+	{{ end }}
+	</ul>
+</section>
+{{ end }}
+
+{{ with .Site.GetPage "/actualites-agenda" }}
+<section class="p-8 border-b" id="{{ .Slug }}">
+	<h2 class="text-3xl font-bold"><a href="{{ .Permalink }}" class="">{{ .Title }}</a></h2>
+	<p class="text-gray-600">{{ .Params.subtitle }}</p>
+	
+	<div class="my-8">
+		<div class="flex flex-wrap -mx-4 -mb-8">
+			{{ range .Pages.ByDate.Reverse }}
+				<article class="w-full lg:w-1/2 px-4 lg:pr-8 mb-8 flex items-center">
+					<figure class="w-32 h-32 mr-6 bg-gray-300">
+						{{ $image := .Resources.GetMatch "cover" }}
+						{{ with $image }}
+						<img width="128" height="128" src="{{ (.Resize "x256").RelPermalink }}" alt="" class="w-full h-full object-fit">
+						{{ end }}
+					</figure>
+					
+					<div class="flex-1">
+						<header class="">
+							<time class="text-gray-600" datetime="{{ dateFormat "2006-01-02" .Date }}">
+								{{ .Date.Day }} {{ index $.Site.Data.mois (printf "%d" .Date.Month) }} {{ .Date.Year }}
+							</time>
+							<h3 class="font-bold text-lg">{{ .Title }}</h3>
+						</header>
+						<div class="text-gray-800">
+							{{ .Params.description | safeHTML | truncate 80 }}
+							{{ if .Truncated }}
+							<!-- This <div> includes a read more link, but only if the summary is truncated... -->
+							<a href="{{ .RelPermalink }}" tabindex="0" class="text-gray-600 underline" title="Lire {{ .Title }}">Lire la suite</a>
+							{{ end }}
+						</div>
+					</div>
+				</article>
+			{{ end }}
+		</div>
+	</div>
+	
+	<footer class="my-12 flex">
+		<a href="{{ .Permalink }}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+			<i class="gg-arrow-right mr-3"></i>
+			<span>Voir toutes les actualités et les événements</span>
+		</a>
+	</footer>
+</section>
+{{ end }}
+
+<div class="">
+	<figure class="w-full relative pb-1/2">
+		<img src="{{ .Site.BaseURL }}/img/joackim-weiler-y8xMDyBZ9Hk-unsplash.jpg" alt="" class="object-cover absolute w-full h-full">
+	</figure>
+</div>
+
+{{ with .Site.GetPage "/sante-territoire" }}
+<section class="p-8 border-b" id="{{ .Slug }}">
+	<h2 class="text-3xl font-bold"><a href="{{ .Permalink }}" class="">{{ .Title }}</a></h2>
+	<p class="text-gray-600">{{ .Params.subtitle }} le <time class="text-gray-600" datetime="{{ dateFormat "2006-01-02" now }}">{{ now.Day }} {{ index $.Site.Data.mois (printf "%d" now.Month) }} {{ now.Year }}</time></p>
+	
+	<div class="my-8">
+		<div class="flex flex-wrap -mx-4 -mb-8">
+			
+			<div class="w-full lg:w-1/2 px-4 mb-8">
+				<h3>Météo</h3>
+				<ul class="w-full flex flex-wrap xl:justify-center items-start my-8 -mx-6">
+					<li class="page-link | w-1/4 ml-0 mb-2 px-6">
+						<div class="relative flex flex-col-reverse justify-center items-center text-center">
+							<div>
+								<h4 class="page-link__title | link-full text-base text-gray-600">Température</h4>
+								<p class="">Douce</p>
+							</div>
+							<div class="w-full relative pb-1/1 mb-4">
+								<div class="page-link__icon-container | absolute w-full h-full flex justify-center items-center rounded-full bg-gray-300">
+									<span class="page-link__icon | text-xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl select-none">19<sup class="text-sm sm:text-base">°C</sup></span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="page-link | w-1/4 ml-0 mb-2 px-6">
+						<div class="relative flex flex-col-reverse justify-center items-center text-center">
+							<div>
+								<h4 class="page-link__title | link-full text-base text-gray-600">Aujourd’hui</h4>
+								<p class="">Ensoleillé</p>
+							</div>
+							<div class="w-full relative pb-1/1 mb-4">
+								<div class="page-link__icon-container | absolute w-full h-full flex justify-center items-center rounded-full bg-gray-300">
+									<span class="page-link__icon | text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl select-none">☁️</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="page-link | w-1/4 ml-0 mb-2 px-6">
+						<div class="relative flex flex-col-reverse justify-center items-center text-center">
+							<div>
+								<h4 class="page-link__title | link-full text-base text-gray-600">Demain</h4>
+								<p class="">Couvert</p>
+							</div>
+							<div class="w-full relative pb-1/1 mb-4">
+								<div class="page-link__icon-container | absolute w-full h-full flex justify-center items-center rounded-full bg-gray-300">
+									<span class="page-link__icon | text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl select-none">⛅️</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="page-link | w-1/4 ml-0 mb-2 px-6">
+						<div class="relative flex flex-col-reverse justify-center items-center text-center">
+							<div>
+								<h4 class="page-link__title | link-full text-base text-gray-600">Après-demain</h4>
+								<p class="">Nuageux</p>
+							</div>
+							<div class="w-full relative pb-1/1 mb-4">
+								<div class="page-link__icon-container | absolute w-full h-full flex justify-center items-center rounded-full bg-gray-300">
+									<span class="page-link__icon | text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl select-none">☀️</span>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="w-full lg:w-1/2 px-4 mb-8">
+				<h3>Eau</h3>
+				<ul class="w-full flex flex-wrap xl:justify-center items-start my-8 -mx-6">
+					<li class="page-link | w-1/4 ml-0 mb-2 px-6">
+						<div class="relative flex flex-col-reverse justify-center items-center text-center">
+							<div>
+								<h4 class="page-link__title | link-full text-base text-gray-600">Réserves</h4>
+								<p class="">Bonnes</p>
+							</div>
+							<div class="w-full relative pb-1/1 mb-4">
+								<div class="page-link__icon-container | absolute w-full h-full flex justify-center items-center rounded-full bg-gray-300">
+									<span class="page-link__icon | text-xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl select-none">80<sup class="text-sm sm:text-base">%</sup></span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="page-link | w-1/4 ml-0 mb-2 px-6">
+						<div class="relative flex flex-col-reverse justify-center items-center text-center">
+							<div>
+								<h4 class="page-link__title | link-full text-base text-gray-600">Qualité</h4>
+								<p class="">Bonne</p>
+							</div>
+							<div class="w-full relative pb-1/1 mb-4">
+								<div class="page-link__icon-container | absolute w-full h-full flex justify-center items-center rounded-full bg-gray-300">
+									<span class="page-link__icon | text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl select-none">👍</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="page-link | w-1/4 ml-0 mb-2 px-6">
+						<div class="relative flex flex-col-reverse justify-center items-center text-center">
+							<div>
+								<h4 class="page-link__title | link-full text-base text-gray-600">Saumons observés</h4>
+								<p class="">12</p>
+							</div>
+							<div class="w-full relative pb-1/1 mb-4">
+								<div class="page-link__icon-container | absolute w-full h-full flex justify-center items-center rounded-full bg-gray-300">
+									<span class="page-link__icon | text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl select-none">🐟</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="page-link | w-1/4 ml-0 mb-2 px-6">
+						<div class="relative flex flex-col-reverse justify-center items-center text-center">
+							<div>
+								<h4 class="page-link__title | link-full text-base text-gray-600">Pluviométrie</h4>
+								<p class="">2 mm / jour</p>
+							</div>
+							<div class="w-full relative pb-1/1 mb-4">
+								<div class="page-link__icon-container | absolute w-full h-full flex justify-center items-center rounded-full bg-gray-300">
+									<span class="page-link__icon | text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl select-none">🌧</span>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+</section>
+{{ end }}
+
+<div class="">
+	<figure class="w-full relative pb-1/2">
+		<img src="{{ .Site.BaseURL }}/img/mathias-adam-o8UvjwglgDw-unsplash.jpg" alt="" class="object-cover absolute w-full h-full">
+	</figure>
+</div>
+
+{{ end }}
