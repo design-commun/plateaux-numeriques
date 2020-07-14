@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html lang='{{ .Site.LanguageCode }}'>
-    {{- partial "head.html" . -}}
-    <body class="box-border antialiased flex flex-col min-h-screen">
-        <!--{{- partial "dev-size-indicator.html" . -}}-->
-        {{- partial "header.html" . -}}
-        <main class="relative w-full max-w-screen-xl mx-auto flex-1 xl:border-l xl:border-r">
-        {{- block "main" . }}{{- end }}
-        </main>
-        {{- partial "footer.html" . -}}
-        <!--{{- partial "dev-parameters.html" . -}}-->
-        
-        <!-- Include the script that builds the page and powers Netlify CMS -->
-        <!--<script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>-->
-    </body>
+  {{- partial "head.html" . -}}
+  <body class="box-border antialiased flex flex-col min-h-screen">
+    <!--{{- partial "dev-size-indicator.html" . -}}-->
+    {{- partial "header.html" . -}}
+    <main class="relative w-full max-w-screen-xl mx-auto flex-1 xl:border-l xl:border-r">
+    {{- block "main" . }}{{- end }}
+    </main>
+    {{- partial "footer.html" . -}}
+    <!--{{- partial "dev-parameters.html" . -}}-->
+  </body>
 
-    {{ $js := resources.Get "js/main.js" }}
-    {{ if .Site.IsServer }}
-        <script src="{{ $js.RelPermalink }}"></script>
-    {{ else }}
-        {{ $js := $js| minify }}
-        <script src="{{ $js.RelPermalink }}"></script>
-    {{ end }}
+  {{ $js := resources.Get "js/main.js" }}
+  {{ if .Site.IsServer }}
+    <script src="{{ $js.RelPermalink }}"></script>
+  {{ else }}
+    {{ $js := $js| minify }}
+    <script src="{{ $js.RelPermalink }}"></script>
+  {{ end }}
 </html>
