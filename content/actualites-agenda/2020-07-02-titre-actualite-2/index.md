@@ -1,7 +1,8 @@
 ---
 title: "Titre d’une actualité 2"
-slug: "titre-actualite-2"
+slug: "2020-07-02-titre-actualite-2"
 date: 2020-07-02T15:18:41+02:00
+publishDate: 2020-07-02T15:18:41+02:00
 draft: false
 description: Nullam id dolor id nibh ultricies vehicula ut id elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
 categories:

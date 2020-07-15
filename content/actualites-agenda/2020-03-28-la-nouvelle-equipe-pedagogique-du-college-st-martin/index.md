@@ -1,7 +1,8 @@
 ---
 title: "La nouvelle équipe pédagogique du collège St Martin"
-slug: "la-nouvelle-equipe-pedagogique-du-college-st-martin"
+slug: "2020-03-28-la-nouvelle-equipe-pedagogique-du-college-st-martin"
 date: 2020-03-28T12:17:41+02:00
+publishDate: 2020-03-28T12:17:41+02:00
 draft: false
 description: Aenean lacinia bibenum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo.
 categories:

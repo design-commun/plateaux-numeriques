@@ -1,7 +1,8 @@
 ---
 title: "Titre d’une actualité 1"
-slug: "titre-actualite-1"
+slug: "2020-01-12-titre-actualite-1"
 date: 2020-01-12T15:18:41+02:00
+publishDate: 2020-01-12T15:18:41+02:00
 draft: false
 description: Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas faucibus mollis interdum.
 categories:

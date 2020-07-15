@@ -1,7 +1,8 @@
 ---
 title: "Permanences pour la distribution des sacs jaunes"
-slug: "permanences-pour-la-distribution-des-sacs-jaunes"
+slug: "2020-05-27-permanences-pour-la-distribution-des-sacs-jaunes"
 date: 2020-05-27T15:18:41+02:00
+publishDate: 2020-05-27T15:18:41+02:00
 draft: false
 description: Cras mattis consectetur purus sit amet fermentum. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
 categories:
